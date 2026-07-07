@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>리크루터 1:1 컨설팅 — Firstbite | by Career Cheese</title>
+<style>
+  :root{
+    --bg:#FFF9EC; --card:#FFFFFF; --card2:#FFF3D6; --border:#F0E2B8;
+    --text:#3B3320; --muted:#8A7F5C; --accent:#E09E00; --accent2:#F5B301;
+    --green:#15803d; --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.6}
+  .wrap{max-width:720px;margin:0 auto;padding:32px 20px 80px}
+  a.back{color:var(--muted);text-decoration:none;font-size:.85rem}
+  a.back:hover{color:var(--accent)}
+  header{text-align:center;margin:20px 0 30px}
+  header h1{font-size:1.8rem;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+  header p{color:var(--muted);max-width:480px;margin:0 auto}
+  .byline{font-size:.75rem;color:var(--accent2);font-weight:800;letter-spacing:.1em;margin-top:8px;text-transform:uppercase}
+  .resultbanner{background:linear-gradient(135deg,rgba(245,179,1,.12),rgba(245,158,11,.06));border:1px solid var(--accent2);border-radius:var(--radius);padding:16px 20px;margin-bottom:24px;font-size:.92rem}
+  .resultbanner b{color:var(--accent)}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:26px;margin-bottom:18px}
+  .card h2{font-size:1.05rem;margin-bottom:14px}
+  .benefits{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+  .benefits.two{grid-template-columns:1fr 1fr}
+  @media(max-width:600px){.benefits,.benefits.two{grid-template-columns:1fr}}
+  .benefit{background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:14px}
+  .benefit .ico{font-size:1.4rem}
+  .benefit h3{font-size:.9rem;margin:8px 0 4px}
+  .benefit p{font-size:.8rem;color:var(--muted)}
+  .flow{display:flex;gap:8px;flex-wrap:wrap;font-size:.85rem;color:var(--muted);align-items:center}
+  .flow span.step{background:var(--card2);border:1px solid var(--border);border-radius:999px;padding:6px 14px;color:var(--text)}
+  label{display:block;font-size:.85rem;color:var(--muted);font-weight:600;margin:14px 0 6px}
+  input,textarea{width:100%;padding:12px 14px;border-radius:10px;border:1px solid var(--border);background:var(--card2);color:var(--text);font-size:.95rem;outline:none;font-family:inherit}
+  input:focus,textarea:focus{border-color:var(--accent)}
+  button.primary{width:100%;margin-top:20px;padding:14px;border:none;border-radius:10px;font-size:1rem;font-weight:700;cursor:pointer;background:linear-gradient(90deg,var(--accent),var(--accent2));color:#2b2410}
+  .note{font-size:.78rem;color:var(--muted);margin-top:10px;text-align:center}
+  .disclaimer{margin-top:30px;font-size:.75rem;color:var(--muted);text-align:center}
+  /* 모바일 최적화 */
+  @media(max-width:480px){
+    .wrap{padding:20px 14px 60px}
+    header h1{font-size:1.4rem}
+    header p{font-size:.88rem}
+    .card{padding:18px 16px}
+    .card[style*="display:flex"]{flex-direction:column;text-align:center;gap:8px !important}
+    .resultbanner{font-size:.85rem;padding:14px 16px}
+    .flow{font-size:.8rem}
+    .flow span.step{padding:6px 11px}
+    .benefit{padding:12px}
+    input,textarea{font-size:16px} /* iOS 자동 확대 방지 */
+    button.primary{font-size:.95rem}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="firstbite.html">← Firstbite 진단으로 돌아가기</a>
+  <header>
+    <h1>🧀 리크루터 1:1 컨설팅</h1>
+    <p>현직 리크루터가 내 진단 결과를 함께 보며 지원 전략, 이력서, 포지션 선택까지 같이 잡아드려요.</p>
+    <p class="byline">by Career Cheese</p>
+  </header>
+
+  <div class="resultbanner hidden" id="banner" style="display:none"></div>
+
+  <div class="card" style="display:flex;gap:16px;align-items:center">
+    <div style="font-size:2.4rem">👤</div>
+    <div>
+      <h2 style="margin-bottom:4px">담당 리크루터</h2>
+      <p style="font-size:.9rem;color:var(--muted)"><b style="color:var(--text)">한국 대기업 · 글로벌 대기업 채용 경력 10년</b>의 현직 리크루터가 직접 <b style="color:var(--text)">내부자의 시선</b>으로 객관적인 평가와 합격 비법을 제공해드립니다.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>무엇을 해드리나요?</h2>
+    <div class="benefits">
+      <div class="benefit"><div class="ico">🤖</div><h3>AI 사전 진단</h3><p>Firstbite AI 진단 결과를 기반으로 상담 전에 강점·갭을 미리 분석</p></div>
+      <div class="benefit"><div class="ico">💰</div><h3>잡마켓 가치 진단</h3><p>지금 잡마켓에서 내 경쟁력과 몸값이 어느 수준인지 객관적으로 평가</p></div>
+      <div class="benefit"><div class="ico">🎯</div><h3>맞춤 공고 추천</h3><p>나에게 실제로 승산 있는 공고를 골라 우선순위와 함께 추천</p></div>
+      <div class="benefit"><div class="ico">📄</div><h3>이력서 진단·수정</h3><p>서류 통과율을 높이는 구체적인 수정 방안 제시</p></div>
+      <div class="benefit"><div class="ico">🗺️</div><h3>지원 전략</h3><p>어떤 회사에 어떤 순서로 지원할지 실행 플랜까지</p></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>패키지 구성</h2>
+    <div class="benefits two">
+      <div class="benefit"><div class="ico">🎥</div><h3>1:1 컨설팅 60분 × 2회</h3><p>1회차: AI 사전 진단 리뷰 + 잡마켓 가치 진단 · 2회차: 이력서 수정안 + 맞춤 공고·지원 전략</p></div>
+      <div class="benefit"><div class="ico">💬</div><h3>Q&A 단체카톡방 3개월</h3><p>세션 후 3개월간 카톡방에서 리크루터에게 수시 질문 가능</p></div>
+    </div>
+  </div>
+
+  <div class="card" style="text-align:center;border:2px solid var(--accent2);background:linear-gradient(135deg,rgba(245,179,1,.08),rgba(245,158,11,.03))">
+    <span style="display:inline-block;background:var(--accent2);color:#2b2410;font-size:.75rem;font-weight:800;padding:4px 14px;border-radius:999px;letter-spacing:.05em">🧀 런칭 기념 50% 할인</span>
+    <div style="margin-top:14px">
+      <span style="font-size:1rem;color:var(--muted);text-decoration:line-through">정가 1,000,000원</span>
+      <div style="font-size:2.2rem;font-weight:800;color:var(--accent);margin-top:2px">500,000원</div>
+      <p style="font-size:.82rem;color:var(--muted);margin-top:6px">1:1 컨설팅 2회 + 카톡방 3개월 포함 · <b style="color:var(--text)">8월 31일까지</b> 신청 시</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>진행 방식</h2>
+    <div class="flow">
+      <span class="step">1. 신청서 제출</span> → <span class="step">2. AI 사전 진단 (1영업일)</span> → <span class="step">3. 1:1 세션 60분 × 2회</span> → <span class="step">4. 카톡방 3개월 케어</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>신청 & 결제</h2>
+    <form id="form">
+      <label>이름</label>
+      <input id="name" required placeholder="홍길동">
+      <label>이메일</label>
+      <input id="email" type="email" required placeholder="you@example.com">
+      <label>희망 직무</label>
+      <input id="targetRole" placeholder="예: 데이터 분석가">
+      <label>궁금한 점 / 현재 상황</label>
+      <textarea id="msg" rows="4" placeholder="예: 비전공자인데 데이터 직무로 전환하고 싶어요. 지금 준비 상태에서 뭐부터 하면 될까요?"></textarea>
+      <button class="primary" type="submit">결제하기 · 500,000원 →</button>
+      <p class="note">8월 31일까지 50% 할인가 적용 · 결제 후 1영업일 내 리크루터 매칭과 AI 사전 진단 안내를 드려요.</p>
+    </form>
+  </div>
+
+  <p class="disclaimer">Firstbite 리크루터 컨설팅은 Career Cheese가 운영합니다.</p>
+</div>
+
+<!-- 완료 팝업 -->
+<div id="modal" style="display:none;position:fixed;inset:0;background:rgba(59,51,32,.45);z-index:99;align-items:center;justify-content:center;padding:20px">
+  <div style="background:var(--card);border:2px solid var(--accent2);border-radius:16px;max-width:380px;width:100%;padding:34px 28px;text-align:center;box-shadow:0 20px 60px rgba(59,51,32,.25)">
+    <div style="font-size:2.6rem">🧀</div>
+    <h2 style="margin:12px 0 8px;font-size:1.2rem">신청이 완료되었습니다.</h2>
+    <p style="color:var(--muted);font-size:.92rem">곧 연락드리겠습니다.</p>
+    <button onclick="document.getElementById('modal').style.display='none'" style="margin-top:20px;padding:12px 34px;border:none;border-radius:10px;font-weight:700;cursor:pointer;background:linear-gradient(90deg,var(--accent),var(--accent2));color:#2b2410;font-size:.95rem">확인</button>
+  </div>
+</div>
+
+<script>
+// Firstbite 진단 결과 연동 (URL 파라미터)
+const p=new URLSearchParams(location.search);
+const stage=p.get("stage"), role=p.get("role"), fit=p.get("fit");
+if(role){
+  const b=document.getElementById("banner");
+  b.style.display="block";
+  b.innerHTML=`Firstbite 진단 결과 — 현재 단계 <b>${stage||"-"}</b>, 추천 직무 <b>${role}</b>${fit?` (적합도 ${fit}%)`:""}. 이 결과를 바탕으로 리크루터가 상담을 준비해요.`;
+  document.getElementById("targetRole").value=role;
+}
+// 신청 저장 백엔드 (배포 시 백엔드 URL로 변경)
+const BACKEND="http://localhost:8787";
+// ★ 결제 링크(토스/카카오) 생성 후 붙여넣으면, 저장 후 결제 페이지도 함께 열립니다.
+const PAYMENT_URL="";
+const form=document.getElementById("form");
+form.addEventListener("submit",async e=>{
+  e.preventDefault();
+  const v=id=>document.getElementById(id).value;
+  const btn=form.querySelector("button.primary");
+  btn.disabled=true; const orig=btn.textContent; btn.textContent="접수 중…";
+  try{
+    const res=await fetch(`${BACKEND}/api/leads`,{
+      method:"POST",headers:{"content-type":"application/json"},
+      body:JSON.stringify({name:v("name"),email:v("email"),targetRole:v("targetRole"),msg:v("msg"),stage,fit})
+    });
+    if(!res.ok) throw new Error("save failed");
+    if(PAYMENT_URL) window.open(PAYMENT_URL,"_blank");
+    document.getElementById("modal").style.display="flex";
+    form.reset();
+  }catch(err){
+    alert("접수 중 문제가 발생했어요. 잠시 후 다시 시도해 주세요.");
+  }finally{
+    btn.disabled=false; btn.textContent=orig;
+  }
+});
+</script>
+</body>
+</html>

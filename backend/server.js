@@ -141,8 +141,12 @@ const adapters = {
   async saramin_scrape({ qko }) {
     if (SARAMIN_KEY || process.env.DISABLE_SCRAPERS === "1") return [];
     const html = await hfetch(`https://www.saramin.co.kr/zf_user/search/recruit?searchType=search&searchword=${encodeURIComponent(qko)}&recruitPageCount=15`);
-    return extractAnchors(html, "rec_idx=\\d+", "https://www.saramin.co.kr")
+    const seen = new Set(); // rec_idx 기준 중복 제거 + 잡음 제목 필터
+    return extractAnchors(html, "rec_idx=\\d+", "https://www.saramin.co.kr", 20)
       .filter(a => a.url.includes("/relay/") || a.url.includes("view"))
+      .filter(a => !/^(홈페이지 지원|즉시 지원|스크랩|입사지원)/.test(a.title))
+      .filter(a => { const id = (a.url.match(/rec_idx=(\d+)/) || [])[1]; if (!id || seen.has(id)) return false; seen.add(id); return true; })
+      .slice(0, 8)
       .map(a => ({ source: "사람인", title: a.title, company: "", location: "한국", url: a.url, posted: null, salary: null }));
   },
   // 자소설닷컴: Next.js __NEXT_DATA__ JSON에서 채용 객체 추출, 실패 시 앵커 패턴
@@ -191,11 +195,19 @@ async function getJobs(q, qko, limit) {
     if (s.status === "fulfilled") { sources[names[i]] = s.value.length; jobs.push(...s.value); }
     else sources[names[i]] = "error: " + (s.reason?.message || s.reason);
   });
-  // 한국 소스 우선 정렬, URL 기준 dedupe
+  // URL dedupe 후, 한국 소스 우선 순서로 소스별 라운드로빈(다양성 확보)
   const seen = new Set();
   const rank = { "사람인": 0, "원티드": 1, "잡코리아": 2, "자소설닷컴": 3, "피플앤잡": 4, "Remotive": 5, "Jobicy": 6 };
-  const out = jobs.filter(j => !seen.has(j.url) && seen.add(j.url))
-    .sort((a, b) => (rank[a.source] ?? 9) - (rank[b.source] ?? 9)).slice(0, limit);
+  const uniq = jobs.filter(j => !seen.has(j.url) && seen.add(j.url));
+  const groups = [...new Set(uniq.map(j => j.source))]
+    .sort((a, b) => (rank[a] ?? 9) - (rank[b] ?? 9))
+    .map(s => uniq.filter(j => j.source === s));
+  const out = [];
+  for (let i = 0; out.length < limit; i++) {
+    let added = false;
+    for (const g of groups) { if (g[i]) { out.push(g[i]); added = true; if (out.length >= limit) break; } }
+    if (!added) break;
+  }
   const data = { count: out.length, sources, jobs: out };
   cacheSet(key, data);
   return { cached: false, ...data };

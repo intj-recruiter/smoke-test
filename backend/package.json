@@ -1,0 +1,8 @@
+{
+  "name": "career-compass-backend",
+  "version": "0.1.0",
+  "description": "Job aggregation backend for Career Compass (사람인/원티드/Remotive/Jobicy)",
+  "main": "server.js",
+  "scripts": { "start": "node server.js" },
+  "engines": { "node": ">=18" }
+}

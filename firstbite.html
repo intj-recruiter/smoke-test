@@ -183,6 +183,7 @@
   <p class="disclaimer">Firstbite는 Career Cheese의 서비스입니다. 추천 결과는 참고용 프로토타입 정보이며 전문 커리어 상담을 대체하지 않아요. 국내 링크는 잡코리아·사람인·원티드·자소설닷컴·피플앤잡·LinkedIn 검색, 라이브 공고는 백엔드 및 Remotive/Jobicy 연동입니다.</p>
 </div>
 
+<script src="config.js"></script>
 <script>
 // ---------- data ----------
 const SKILLS = ["글쓰기·커뮤니케이션","데이터 분석","엑셀·스프레드시트","SQL","Python·프로그래밍","웹 개발","UI/UX 디자인","그래픽 디자인","소셜미디어","마케팅 기초","영업·설득","고객 지원","프로젝트 조율","리서치","발표·스피치","금융 지식","통계","프로덕트 감각","채용·HR","외국어","머신러닝·AI","클라우드·DevOps","보안","공급망·물류","의료·임상","회계","CRM 툴(세일즈포스 등)","영상·멀티미디어"];
@@ -402,7 +403,7 @@ function analyze(){
 }
 
 // ---------- live job listings ----------
-const BACKEND="http://localhost:8787"; // 배포 시 백엔드 URL로 변경
+const BACKEND=(window.FB_BACKEND||"http://localhost:8787"); // config.js에서 설정
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const ago=d=>{const days=Math.max(0,Math.round((Date.now()-new Date(d))/864e5));return days===0?"오늘":days+"일 전";};
 

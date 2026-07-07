@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: firstbite-backend
+    runtime: node
+    rootDir: backend
+    startCommand: node server.js
+    plan: free
+    envVars:
+      - key: SARAMIN_API_KEY
+        sync: false

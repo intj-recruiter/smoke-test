@@ -1,0 +1,1600 @@
+{
+ "meta": {
+  "name": "Fortune 500 + High-Growth IT Active Hiring Roles DB",
+  "generated": "2026-07-05",
+  "window": "2023-01 ~ 2026-07 (최근 3년 실채용 + 현재 활발 채용)",
+  "note": "500개 기업 공고 전수 수집이 아닌, 공개 채용 데이터 분석 기반. example_f500_employers는 해당 직무를 대표적으로 채용하는 Fortune 500 기업 예시(참고용). | id 43+ 직무는 Palantir/OpenAI/Anthropic/Databricks/xAI/Scale AI 등 급성장 IT 기업(비 F500 포함) 채용 직무. employer_type: f500 | growth_it | mixed.",
+  "sources": [
+   "LinkedIn Jobs on the Rise 2026 (2023.1~2025.7 실채용 데이터 기반 성장률)",
+   "Robert Half 2025 H2 job postings analysis (SW engineer 149.4k, customer service 140.8k, admin assistant 81.7k postings; financial services +16% YoY)",
+   "CyberSeek / StationX (cybersecurity postings +124% YoY, 미국 내 47만+ 오픈)",
+   "demand: surging=성장률 급등, high=공고량 대규모, steady=꾸준한 수요",
+   "MarkTechPost/The New Stack/Paraform (2026.5): OpenAI·Anthropic·Google FDE 채용 확대, OpenAI 'The Deployment Company'($4B), Anthropic-Blackstone·Goldman $1.5B JV",
+   "jobsbyculture (2026): FDE 오픈 포지션 224개 / 39개 AI 기업, comp $300-600k+",
+   "GTMnow: Anthropic·OpenAI 채용 중 GTM 직군 비중 최대",
+   "국내 공고 링크: 잡코리아/사람인/원티드/자소설닷컴/피플앤잡/LinkedIn KR 검색 딥링크 (search_query_ko 사용)"
+  ],
+  "skills_legend": [
+   "Writing & communication",
+   "Data analysis",
+   "Excel / spreadsheets",
+   "SQL",
+   "Python / programming",
+   "Web development",
+   "UI/UX design",
+   "Graphic design",
+   "Social media",
+   "Marketing basics",
+   "Sales / persuasion",
+   "Customer support",
+   "Project coordination",
+   "Research",
+   "Public speaking",
+   "Financial literacy",
+   "Statistics",
+   "Product sense",
+   "Recruiting / people ops",
+   "Foreign languages",
+   "Machine learning / AI",
+   "Cloud & DevOps",
+   "Cybersecurity",
+   "Supply chain / logistics",
+   "Healthcare / clinical",
+   "Accounting",
+   "CRM tools (e.g. Salesforce)",
+   "Video & multimedia"
+  ],
+  "interests_legend": [
+   "Building products",
+   "Analyzing data & finding patterns",
+   "Creative work & design",
+   "Talking to customers",
+   "Writing & storytelling",
+   "Organizing people & projects",
+   "Technology & coding",
+   "Business strategy",
+   "Helping & teaching people",
+   "Numbers & finance",
+   "AI & machine learning",
+   "Healthcare & wellbeing"
+  ]
+ },
+ "roles": [
+  {
+   "id": 1,
+   "title": "AI Engineer",
+   "title_ko": "AI 엔지니어",
+   "category": "Data & AI",
+   "demand": "surging",
+   "demand_basis": "LinkedIn 2026 성장률 1위",
+   "entry_salary_usd": "$100-140k",
+   "example_f500_employers": [
+    "Microsoft",
+    "Alphabet",
+    "Meta",
+    "Nvidia",
+    "JPMorgan Chase"
+   ],
+   "skills": [
+    20,
+    4,
+    3,
+    16
+   ],
+   "interests": [
+    10,
+    6
+   ],
+   "growth_path": "ML Engineer → Senior → Staff/Applied Scientist",
+   "search_query": "ai engineer",
+   "employer_type": "f500",
+   "search_query_ko": "AI 엔지니어"
+  },
+  {
+   "id": 2,
+   "title": "AI Consultant / Strategist",
+   "title_ko": "AI 컨설턴트",
+   "category": "Data & AI",
+   "demand": "surging",
+   "demand_basis": "LinkedIn 2026 성장률 2위",
+   "entry_salary_usd": "$80-110k",
+   "example_f500_employers": [
+    "IBM",
+    "Accenture",
+    "Microsoft",
+    "Salesforce"
+   ],
+   "skills": [
+    20,
+    0,
+    17,
+    14
+   ],
+   "interests": [
+    10,
+    7
+   ],
+   "growth_path": "Consultant → Senior → AI Practice Lead",
+   "search_query": "ai consultant",
+   "employer_type": "f500",
+   "search_query_ko": "AI 컨설턴트"
+  },
+  {
+   "id": 3,
+   "title": "Data Annotator / AI Trainer",
+   "title_ko": "데이터 어노테이터·AI 트레이너",
+   "category": "Data & AI",
+   "demand": "surging",
+   "demand_basis": "LinkedIn 2026 성장률 4위",
+   "entry_salary_usd": "$40-60k",
+   "example_f500_employers": [
+    "Meta",
+    "Alphabet",
+    "Tesla",
+    "Amazon"
+   ],
+   "skills": [
+    13,
+    1,
+    0
+   ],
+   "interests": [
+    10,
+    1
+   ],
+   "growth_path": "Annotator → Data QA Lead → Data Ops Manager",
+   "search_query": "data annotation",
+   "employer_type": "f500",
+   "search_query_ko": "데이터 라벨링"
+  },
+  {
+   "id": 4,
+   "title": "ML Researcher (Junior)",
+   "title_ko": "머신러닝 리서처",
+   "category": "Data & AI",
+   "demand": "surging",
+   "demand_basis": "LinkedIn 2026 성장률 5위",
+   "entry_salary_usd": "$110-150k",
+   "example_f500_employers": [
+    "Alphabet",
+    "Meta",
+    "Microsoft",
+    "Nvidia"
+   ],
+   "skills": [
+    20,
+    4,
+    16,
+    13
+   ],
+   "interests": [
+    10,
+    1
+   ],
+   "growth_path": "Researcher → Senior → Research Scientist",
+   "search_query": "machine learning researcher",
+   "employer_type": "f500",
+   "search_query_ko": "머신러닝 연구원"
+  },
+  {
+   "id": 5,
+   "title": "Data Scientist",
+   "title_ko": "데이터 사이언티스트",
+   "category": "Data & AI",
+   "demand": "high",
+   "demand_basis": "전 산업 공통 수요",
+   "entry_salary_usd": "$75-105k",
+   "example_f500_employers": [
+    "UnitedHealth",
+    "JPMorgan Chase",
+    "Walmart",
+    "Meta"
+   ],
+   "skills": [
+    1,
+    4,
+    3,
+    16,
+    20
+   ],
+   "interests": [
+    1,
+    10
+   ],
+   "growth_path": "DS → Senior DS → ML Eng / DS Manager",
+   "search_query": "data scientist",
+   "employer_type": "f500",
+   "search_query_ko": "데이터 사이언티스트"
+  },
+  {
+   "id": 6,
+   "title": "Data Analyst",
+   "title_ko": "데이터 애널리스트",
+   "category": "Data & AI",
+   "demand": "high",
+   "demand_basis": "전 산업 공통 수요",
+   "entry_salary_usd": "$60-85k",
+   "example_f500_employers": [
+    "Walmart",
+    "Target",
+    "JPMorgan Chase",
+    "UnitedHealth"
+   ],
+   "skills": [
+    1,
+    2,
+    3,
+    16
+   ],
+   "interests": [
+    1,
+    9
+   ],
+   "growth_path": "Analyst → Senior → Analytics Manager / DS",
+   "search_query": "data analyst",
+   "employer_type": "f500",
+   "search_query_ko": "데이터 분석가"
+  },
+  {
+   "id": 7,
+   "title": "Data Center Technician",
+   "title_ko": "데이터센터 테크니션",
+   "category": "Infrastructure",
+   "demand": "surging",
+   "demand_basis": "LinkedIn 2026 성장률 17위 (AI 인프라 붐)",
+   "entry_salary_usd": "$55-80k",
+   "example_f500_employers": [
+    "Amazon",
+    "Microsoft",
+    "Alphabet",
+    "Oracle"
+   ],
+   "skills": [
+    21,
+    11
+   ],
+   "interests": [
+    6,
+    10
+   ],
+   "growth_path": "Technician → Senior → DC Operations Manager",
+   "search_query": "data center technician",
+   "employer_type": "f500",
+   "search_query_ko": "데이터센터 엔지니어"
+  },
+  {
+   "id": 8,
+   "title": "Software Engineer",
+   "title_ko": "소프트웨어 엔지니어",
+   "category": "Engineering",
+   "demand": "high",
+   "demand_basis": "2025 H2 공고 149,400건 — 전체 1위 (Robert Half)",
+   "entry_salary_usd": "$80-115k",
+   "example_f500_employers": [
+    "Amazon",
+    "Microsoft",
+    "Walmart",
+    "Capital One",
+    "GM"
+   ],
+   "skills": [
+    4,
+    3,
+    21
+   ],
+   "interests": [
+    6,
+    0
+   ],
+   "growth_path": "SWE → Senior → Staff or Eng Manager",
+   "search_query": "software engineer",
+   "employer_type": "f500",
+   "search_query_ko": "백엔드 개발자"
+  },
+  {
+   "id": 9,
+   "title": "Frontend Developer",
+   "title_ko": "프런트엔드 개발자",
+   "category": "Engineering",
+   "demand": "steady",
+   "demand_basis": "디지털 채널 투자 지속",
+   "entry_salary_usd": "$70-100k",
+   "example_f500_employers": [
+    "Disney",
+    "Home Depot",
+    "Target",
+    "Verizon"
+   ],
+   "skills": [
+    5,
+    6,
+    4
+   ],
+   "interests": [
+    6,
+    0
+   ],
+   "growth_path": "Mid → Senior → Tech Lead",
+   "search_query": "frontend developer",
+   "employer_type": "f500",
+   "search_query_ko": "프론트엔드 개발자"
+  },
+  {
+   "id": 10,
+   "title": "Cloud / DevOps Engineer",
+   "title_ko": "클라우드·DevOps 엔지니어",
+   "category": "Engineering",
+   "demand": "high",
+   "demand_basis": "클라우드 전환 지속",
+   "entry_salary_usd": "$85-120k",
+   "example_f500_employers": [
+    "Amazon",
+    "Microsoft",
+    "Oracle",
+    "Capital One"
+   ],
+   "skills": [
+    21,
+    4,
+    22
+   ],
+   "interests": [
+    6,
+    10
+   ],
+   "growth_path": "DevOps → Senior → Platform/SRE Lead",
+   "search_query": "devops engineer",
+   "employer_type": "f500",
+   "search_query_ko": "DevOps 엔지니어"
+  },
+  {
+   "id": 11,
+   "title": "Cybersecurity Analyst (SOC)",
+   "title_ko": "사이버보안 분석가",
+   "category": "Security",
+   "demand": "surging",
+   "demand_basis": "보안 공고 +124% YoY, 미국 내 47만+ 오픈 (CyberSeek)",
+   "entry_salary_usd": "$70-95k",
+   "example_f500_employers": [
+    "Lockheed Martin",
+    "RTX",
+    "Bank of America",
+    "AT&T",
+    "CVS Health"
+   ],
+   "skills": [
+    22,
+    13,
+    1
+   ],
+   "interests": [
+    6,
+    1
+   ],
+   "growth_path": "SOC Analyst → Security Engineer → Security Architect",
+   "search_query": "cybersecurity analyst",
+   "employer_type": "f500",
+   "search_query_ko": "보안 관제"
+  },
+  {
+   "id": 12,
+   "title": "IT Support Specialist",
+   "title_ko": "IT 지원 스페셜리스트",
+   "category": "Infrastructure",
+   "demand": "high",
+   "demand_basis": "전사 IT 운영 상시 수요",
+   "entry_salary_usd": "$45-65k",
+   "example_f500_employers": [
+    "Dell",
+    "HP",
+    "Best Buy",
+    "Cisco"
+   ],
+   "skills": [
+    11,
+    21
+   ],
+   "interests": [
+    8,
+    6
+   ],
+   "growth_path": "IT Support → SysAdmin → Infra Engineer",
+   "search_query": "it support specialist",
+   "employer_type": "f500",
+   "search_query_ko": "IT 지원"
+  },
+  {
+   "id": 13,
+   "title": "Technical Support Engineer",
+   "title_ko": "테크니컬 서포트 엔지니어",
+   "category": "Customer",
+   "demand": "steady",
+   "demand_basis": "SaaS/HW 기업 상시 채용",
+   "entry_salary_usd": "$55-75k",
+   "example_f500_employers": [
+    "Cisco",
+    "Dell",
+    "Oracle",
+    "HP"
+   ],
+   "skills": [
+    11,
+    4,
+    13
+   ],
+   "interests": [
+    8,
+    6
+   ],
+   "growth_path": "Support Eng → Senior → Solutions Engineer",
+   "search_query": "technical support engineer",
+   "employer_type": "f500",
+   "search_query_ko": "기술지원 엔지니어"
+  },
+  {
+   "id": 14,
+   "title": "UX/UI Designer",
+   "title_ko": "UX/UI 디자이너",
+   "category": "Design",
+   "demand": "steady",
+   "demand_basis": "디지털 제품 조직 표준 직무",
+   "entry_salary_usd": "$65-95k",
+   "example_f500_employers": [
+    "Apple",
+    "Alphabet",
+    "IBM",
+    "Intuit"
+   ],
+   "skills": [
+    6,
+    7,
+    13
+   ],
+   "interests": [
+    2,
+    0
+   ],
+   "growth_path": "Product Designer → Senior → Design Lead",
+   "search_query": "ux designer",
+   "employer_type": "f500",
+   "search_query_ko": "UX 디자이너"
+  },
+  {
+   "id": 15,
+   "title": "Graphic / Multimedia Designer",
+   "title_ko": "그래픽·멀티미디어 디자이너",
+   "category": "Design",
+   "demand": "steady",
+   "demand_basis": "브랜드·콘텐츠 수요",
+   "entry_salary_usd": "$50-75k",
+   "example_f500_employers": [
+    "Disney",
+    "Nike",
+    "Comcast",
+    "Target"
+   ],
+   "skills": [
+    7,
+    27,
+    8
+   ],
+   "interests": [
+    2,
+    4
+   ],
+   "growth_path": "Designer → Senior → Art Director",
+   "search_query": "graphic designer",
+   "employer_type": "f500",
+   "search_query_ko": "그래픽 디자이너"
+  },
+  {
+   "id": 16,
+   "title": "Product Manager (APM)",
+   "title_ko": "프로덕트 매니저(APM)",
+   "category": "Product",
+   "demand": "steady",
+   "demand_basis": "대기업 APM 프로그램 유지",
+   "entry_salary_usd": "$85-120k",
+   "example_f500_employers": [
+    "Microsoft",
+    "Amazon",
+    "Capital One",
+    "Walmart"
+   ],
+   "skills": [
+    17,
+    0,
+    12,
+    1
+   ],
+   "interests": [
+    0,
+    7,
+    3
+   ],
+   "growth_path": "APM → PM → Senior PM → GPM",
+   "search_query": "associate product manager",
+   "employer_type": "f500",
+   "search_query_ko": "프로덕트 매니저"
+  },
+  {
+   "id": 17,
+   "title": "Product Marketing Manager",
+   "title_ko": "프로덕트 마케팅 매니저",
+   "category": "Marketing",
+   "demand": "high",
+   "demand_basis": "테크 공고 상위 (Robert Half 2,400건)",
+   "entry_salary_usd": "$75-105k",
+   "example_f500_employers": [
+    "Microsoft",
+    "Adobe",
+    "Cisco",
+    "Meta"
+   ],
+   "skills": [
+    9,
+    0,
+    17,
+    14
+   ],
+   "interests": [
+    7,
+    4
+   ],
+   "growth_path": "PMM → Senior → Director of PMM",
+   "search_query": "product marketing manager",
+   "employer_type": "f500",
+   "search_query_ko": "프로덕트 마케팅"
+  },
+  {
+   "id": 18,
+   "title": "Digital Marketing Specialist",
+   "title_ko": "디지털 마케팅 스페셜리스트",
+   "category": "Marketing",
+   "demand": "steady",
+   "demand_basis": "마케팅 고용 10년간 +6% 전망 (BLS)",
+   "entry_salary_usd": "$50-70k",
+   "example_f500_employers": [
+    "P&G",
+    "Coca-Cola",
+    "Target",
+    "Nike"
+   ],
+   "skills": [
+    8,
+    9,
+    0,
+    1
+   ],
+   "interests": [
+    4,
+    2
+   ],
+   "growth_path": "Specialist → Marketing Manager → Head of Growth",
+   "search_query": "digital marketing",
+   "employer_type": "f500",
+   "search_query_ko": "디지털 마케팅"
+  },
+  {
+   "id": 19,
+   "title": "Field Marketing Representative",
+   "title_ko": "필드 마케팅",
+   "category": "Marketing",
+   "demand": "surging",
+   "demand_basis": "LinkedIn 2026 성장률 13위",
+   "entry_salary_usd": "$45-65k",
+   "example_f500_employers": [
+    "PepsiCo",
+    "Coca-Cola",
+    "P&G",
+    "Kroger"
+   ],
+   "skills": [
+    9,
+    10,
+    14
+   ],
+   "interests": [
+    3,
+    2
+   ],
+   "growth_path": "Field Rep → Regional Marketing Manager",
+   "search_query": "field marketing representative",
+   "employer_type": "f500",
+   "search_query_ko": "필드 마케팅"
+  },
+  {
+   "id": 20,
+   "title": "Advertising Sales Specialist",
+   "title_ko": "광고 영업 스페셜리스트",
+   "category": "Sales",
+   "demand": "surging",
+   "demand_basis": "LinkedIn 2026 성장률 8위",
+   "entry_salary_usd": "$55-85k OTE",
+   "example_f500_employers": [
+    "Alphabet",
+    "Meta",
+    "Comcast",
+    "Disney",
+    "Amazon"
+   ],
+   "skills": [
+    10,
+    9,
+    0
+   ],
+   "interests": [
+    3,
+    7
+   ],
+   "growth_path": "Ad Sales → Account Executive → Sales Manager",
+   "search_query": "advertising sales",
+   "employer_type": "f500",
+   "search_query_ko": "광고 영업"
+  },
+  {
+   "id": 21,
+   "title": "Content / Social Media Specialist",
+   "title_ko": "콘텐츠·소셜미디어",
+   "category": "Marketing",
+   "demand": "steady",
+   "demand_basis": "브랜드 채널 운영 수요",
+   "entry_salary_usd": "$48-68k",
+   "example_f500_employers": [
+    "Disney",
+    "Comcast",
+    "Nike",
+    "Starbucks"
+   ],
+   "skills": [
+    8,
+    0,
+    27
+   ],
+   "interests": [
+    4,
+    2
+   ],
+   "growth_path": "Specialist → Content Lead → Head of Content",
+   "search_query": "social media specialist",
+   "employer_type": "f500",
+   "search_query_ko": "콘텐츠 마케터"
+  },
+  {
+   "id": 22,
+   "title": "Sales Development Rep (SDR)",
+   "title_ko": "영업개발 담당(SDR)",
+   "category": "Sales",
+   "demand": "high",
+   "demand_basis": "B2B 테크 파이프라인 상시 채용",
+   "entry_salary_usd": "$50-75k OTE",
+   "example_f500_employers": [
+    "Oracle",
+    "Salesforce",
+    "Cisco",
+    "ADP"
+   ],
+   "skills": [
+    10,
+    0,
+    26
+   ],
+   "interests": [
+    3,
+    7
+   ],
+   "growth_path": "SDR → AE → Sales Manager",
+   "search_query": "sales development representative",
+   "employer_type": "f500",
+   "search_query_ko": "인사이드 세일즈"
+  },
+  {
+   "id": 23,
+   "title": "Account Manager (Junior)",
+   "title_ko": "어카운트 매니저",
+   "category": "Sales",
+   "demand": "steady",
+   "demand_basis": "기존 고객 관리 수요",
+   "entry_salary_usd": "$55-80k",
+   "example_f500_employers": [
+    "Cisco",
+    "ADP",
+    "American Express"
+   ],
+   "skills": [
+    10,
+    26,
+    12
+   ],
+   "interests": [
+    3,
+    7
+   ],
+   "growth_path": "AM → Senior AM → Key Account Director",
+   "search_query": "account manager",
+   "employer_type": "f500",
+   "search_query_ko": "어카운트 매니저"
+  },
+  {
+   "id": 24,
+   "title": "Customer Service Specialist",
+   "title_ko": "고객 서비스 스페셜리스트",
+   "category": "Customer",
+   "demand": "high",
+   "demand_basis": "2025 H2 공고 140,800건 — 전체 2위 (Robert Half)",
+   "entry_salary_usd": "$38-52k",
+   "example_f500_employers": [
+    "Walmart",
+    "Amazon",
+    "American Express",
+    "Verizon",
+    "Delta"
+   ],
+   "skills": [
+    11,
+    0,
+    19
+   ],
+   "interests": [
+    8,
+    3
+   ],
+   "growth_path": "CS → Team Lead → CS Manager",
+   "search_query": "customer service specialist",
+   "employer_type": "f500",
+   "search_query_ko": "고객 상담"
+  },
+  {
+   "id": 25,
+   "title": "Customer Success Associate",
+   "title_ko": "커스터머 석세스",
+   "category": "Customer",
+   "demand": "steady",
+   "demand_basis": "SaaS 리텐션 조직 표준",
+   "entry_salary_usd": "$50-68k",
+   "example_f500_employers": [
+    "Salesforce",
+    "Microsoft",
+    "Oracle",
+    "ADP"
+   ],
+   "skills": [
+    11,
+    0,
+    26,
+    12
+   ],
+   "interests": [
+    8,
+    3
+   ],
+   "growth_path": "CSM → Senior CSM → CS Manager",
+   "search_query": "customer success",
+   "employer_type": "f500",
+   "search_query_ko": "커스터머 석세스"
+  },
+  {
+   "id": 26,
+   "title": "Customer Experience Specialist",
+   "title_ko": "CX 스페셜리스트",
+   "category": "Customer",
+   "demand": "high",
+   "demand_basis": "소비재 산업 공고 상위 (Robert Half)",
+   "entry_salary_usd": "$45-62k",
+   "example_f500_employers": [
+    "Target",
+    "Home Depot",
+    "Marriott"
+   ],
+   "skills": [
+    11,
+    1,
+    0
+   ],
+   "interests": [
+    8,
+    1
+   ],
+   "growth_path": "CX Specialist → CX Analyst → CX Manager",
+   "search_query": "customer experience",
+   "employer_type": "f500",
+   "search_query_ko": "CX 매니저"
+  },
+  {
+   "id": 27,
+   "title": "Administrative Assistant",
+   "title_ko": "사무 어시스턴트",
+   "category": "Corporate",
+   "demand": "high",
+   "demand_basis": "2025 H2 공고 81,700건 — 전체 3위 (Robert Half)",
+   "entry_salary_usd": "$40-55k",
+   "example_f500_employers": [
+    "UnitedHealth",
+    "JPMorgan Chase",
+    "Disney",
+    "Boeing"
+   ],
+   "skills": [
+    2,
+    0,
+    12
+   ],
+   "interests": [
+    5
+   ],
+   "growth_path": "Admin → Executive Assistant → Office Manager",
+   "search_query": "administrative assistant",
+   "employer_type": "f500",
+   "search_query_ko": "경영지원 사무"
+  },
+  {
+   "id": 28,
+   "title": "Project Coordinator",
+   "title_ko": "프로젝트 코디네이터",
+   "category": "Operations",
+   "demand": "steady",
+   "demand_basis": "대형 프로젝트 조직 상시 수요",
+   "entry_salary_usd": "$48-65k",
+   "example_f500_employers": [
+    "Boeing",
+    "RTX",
+    "AT&T",
+    "Lockheed Martin"
+   ],
+   "skills": [
+    12,
+    0,
+    2
+   ],
+   "interests": [
+    5,
+    7
+   ],
+   "growth_path": "Coordinator → PM → Program Manager",
+   "search_query": "project coordinator",
+   "employer_type": "f500",
+   "search_query_ko": "프로젝트 매니저"
+  },
+  {
+   "id": 29,
+   "title": "Business / Ops Analyst",
+   "title_ko": "비즈니스·운영 애널리스트",
+   "category": "Operations",
+   "demand": "steady",
+   "demand_basis": "프로세스 개선 수요",
+   "entry_salary_usd": "$60-80k",
+   "example_f500_employers": [
+    "IBM",
+    "Elevance Health",
+    "Cigna",
+    "UPS"
+   ],
+   "skills": [
+    2,
+    1,
+    12,
+    15
+   ],
+   "interests": [
+    7,
+    9,
+    1
+   ],
+   "growth_path": "Analyst → Ops Manager → Strategy",
+   "search_query": "business analyst",
+   "employer_type": "f500",
+   "search_query_ko": "사업기획"
+  },
+  {
+   "id": 30,
+   "title": "Supply Chain Analyst",
+   "title_ko": "공급망 애널리스트",
+   "category": "Operations",
+   "demand": "high",
+   "demand_basis": "리테일·물류 대기업 핵심 직무",
+   "entry_salary_usd": "$58-80k",
+   "example_f500_employers": [
+    "Walmart",
+    "Target",
+    "UPS",
+    "PepsiCo",
+    "Sysco"
+   ],
+   "skills": [
+    23,
+    1,
+    2
+   ],
+   "interests": [
+    7,
+    1
+   ],
+   "growth_path": "Analyst → Senior → Supply Chain Manager",
+   "search_query": "supply chain analyst",
+   "employer_type": "f500",
+   "search_query_ko": "SCM 분석"
+  },
+  {
+   "id": 31,
+   "title": "Logistics Coordinator",
+   "title_ko": "물류 코디네이터",
+   "category": "Operations",
+   "demand": "high",
+   "demand_basis": "이커머스 물류망 확장",
+   "entry_salary_usd": "$45-62k",
+   "example_f500_employers": [
+    "UPS",
+    "FedEx",
+    "Amazon",
+    "Sysco"
+   ],
+   "skills": [
+    23,
+    12,
+    2
+   ],
+   "interests": [
+    5,
+    7
+   ],
+   "growth_path": "Coordinator → Ops Supervisor → Logistics Manager",
+   "search_query": "logistics coordinator",
+   "employer_type": "f500",
+   "search_query_ko": "물류 관리"
+  },
+  {
+   "id": 32,
+   "title": "Retail Management Trainee",
+   "title_ko": "리테일 매니지먼트 트레이니",
+   "category": "Operations",
+   "demand": "steady",
+   "demand_basis": "대형 리테일 매장 리더십 파이프라인",
+   "entry_salary_usd": "$45-60k",
+   "example_f500_employers": [
+    "Walmart",
+    "Target",
+    "Costco",
+    "Home Depot",
+    "Kroger"
+   ],
+   "skills": [
+    10,
+    11,
+    12
+   ],
+   "interests": [
+    5,
+    3
+   ],
+   "growth_path": "Trainee → Store Manager → District Manager",
+   "search_query": "retail management trainee",
+   "employer_type": "f500",
+   "search_query_ko": "매장 관리"
+  },
+  {
+   "id": 33,
+   "title": "Financial Analyst",
+   "title_ko": "재무 애널리스트",
+   "category": "Finance",
+   "demand": "high",
+   "demand_basis": "금융권 공고 +16% YoY (Robert Half)",
+   "entry_salary_usd": "$60-85k",
+   "example_f500_employers": [
+    "JPMorgan Chase",
+    "Goldman Sachs",
+    "Bank of America",
+    "Citi"
+   ],
+   "skills": [
+    15,
+    2,
+    1,
+    16
+   ],
+   "interests": [
+    9,
+    7
+   ],
+   "growth_path": "Analyst → Senior → FP&A Manager",
+   "search_query": "financial analyst",
+   "employer_type": "f500",
+   "search_query_ko": "재무 분석"
+  },
+  {
+   "id": 34,
+   "title": "Staff Accountant",
+   "title_ko": "회계 담당",
+   "category": "Finance",
+   "demand": "high",
+   "demand_basis": "회계 인력난 지속",
+   "entry_salary_usd": "$55-75k",
+   "example_f500_employers": [
+    "PepsiCo",
+    "GE",
+    "Ford"
+   ],
+   "skills": [
+    25,
+    2,
+    15
+   ],
+   "interests": [
+    9
+   ],
+   "growth_path": "Staff → Senior Accountant → Controller",
+   "search_query": "staff accountant",
+   "employer_type": "f500",
+   "search_query_ko": "회계 담당"
+  },
+  {
+   "id": 35,
+   "title": "Insurance Claims Specialist",
+   "title_ko": "보험 클레임 스페셜리스트",
+   "category": "Finance",
+   "demand": "steady",
+   "demand_basis": "보험 대기업 상시 채용",
+   "entry_salary_usd": "$45-65k",
+   "example_f500_employers": [
+    "State Farm",
+    "Progressive",
+    "Allstate",
+    "Liberty Mutual",
+    "USAA"
+   ],
+   "skills": [
+    11,
+    0,
+    15
+   ],
+   "interests": [
+    8,
+    9
+   ],
+   "growth_path": "Claims → Senior Adjuster → Claims Manager",
+   "search_query": "insurance claims",
+   "employer_type": "f500",
+   "search_query_ko": "보험 심사"
+  },
+  {
+   "id": 36,
+   "title": "Personal Banker",
+   "title_ko": "퍼스널 뱅커",
+   "category": "Finance",
+   "demand": "high",
+   "demand_basis": "리테일 뱅킹 지점망 채용",
+   "entry_salary_usd": "$42-58k",
+   "example_f500_employers": [
+    "JPMorgan Chase",
+    "Bank of America",
+    "Wells Fargo",
+    "Citi"
+   ],
+   "skills": [
+    10,
+    11,
+    15
+   ],
+   "interests": [
+    9,
+    3
+   ],
+   "growth_path": "Banker → Relationship Manager → Branch Manager",
+   "search_query": "personal banker",
+   "employer_type": "f500",
+   "search_query_ko": "금융 영업"
+  },
+  {
+   "id": 37,
+   "title": "Healthcare Reimbursement Specialist",
+   "title_ko": "의료 수가·청구 스페셜리스트",
+   "category": "Healthcare",
+   "demand": "surging",
+   "demand_basis": "LinkedIn 2026 성장률 6위",
+   "entry_salary_usd": "$45-62k",
+   "example_f500_employers": [
+    "UnitedHealth",
+    "Cigna",
+    "CVS Health",
+    "Centene",
+    "HCA Healthcare"
+   ],
+   "skills": [
+    24,
+    2,
+    11
+   ],
+   "interests": [
+    11,
+    9
+   ],
+   "growth_path": "Specialist → Billing Manager → Revenue Cycle Manager",
+   "search_query": "healthcare reimbursement",
+   "employer_type": "f500",
+   "search_query_ko": "원무 보험청구"
+  },
+  {
+   "id": 38,
+   "title": "Registered Nurse (New Grad)",
+   "title_ko": "간호사 (신규)",
+   "category": "Healthcare",
+   "demand": "surging",
+   "demand_basis": "향후 10년 연 200만 헬스케어 오프닝 전망 (면허 필요)",
+   "entry_salary_usd": "$65-90k",
+   "example_f500_employers": [
+    "HCA Healthcare",
+    "CVS Health",
+    "UnitedHealth",
+    "Humana"
+   ],
+   "skills": [
+    24,
+    11
+   ],
+   "interests": [
+    11,
+    8
+   ],
+   "growth_path": "RN → Charge Nurse → Nurse Manager / NP",
+   "search_query": "registered nurse new grad",
+   "employer_type": "f500",
+   "search_query_ko": "간호사"
+  },
+  {
+   "id": 39,
+   "title": "Medical Assistant",
+   "title_ko": "의료 어시스턴트",
+   "category": "Healthcare",
+   "demand": "high",
+   "demand_basis": "외래·1차 의료 확장 (자격증 필요)",
+   "entry_salary_usd": "$38-50k",
+   "example_f500_employers": [
+    "HCA Healthcare",
+    "CVS Health",
+    "UnitedHealth (Optum)"
+   ],
+   "skills": [
+    24,
+    11,
+    12
+   ],
+   "interests": [
+    11,
+    8
+   ],
+   "growth_path": "MA → Lead MA → Clinic Operations",
+   "search_query": "medical assistant",
+   "employer_type": "f500",
+   "search_query_ko": "간호조무사"
+  },
+  {
+   "id": 40,
+   "title": "Pharmacy Technician",
+   "title_ko": "약국 테크니션",
+   "category": "Healthcare",
+   "demand": "high",
+   "demand_basis": "리테일 약국 인력난 (자격증 필요)",
+   "entry_salary_usd": "$38-52k",
+   "example_f500_employers": [
+    "CVS Health",
+    "Walgreens",
+    "Kroger",
+    "Walmart"
+   ],
+   "skills": [
+    24,
+    11,
+    2
+   ],
+   "interests": [
+    11,
+    8
+   ],
+   "growth_path": "Pharm Tech → Senior Tech → Pharmacy Manager 지원",
+   "search_query": "pharmacy technician",
+   "employer_type": "f500",
+   "search_query_ko": "약국 보조"
+  },
+  {
+   "id": 41,
+   "title": "HR / Recruiting Coordinator",
+   "title_ko": "HR·리크루팅 코디네이터",
+   "category": "People",
+   "demand": "steady",
+   "demand_basis": "대기업 채용 조직 유지",
+   "entry_salary_usd": "$45-62k",
+   "example_f500_employers": [
+    "Walmart",
+    "Amazon",
+    "Marriott",
+    "Starbucks"
+   ],
+   "skills": [
+    18,
+    0,
+    12
+   ],
+   "interests": [
+    8,
+    5
+   ],
+   "growth_path": "Coordinator → Recruiter/HR Generalist → HRBP",
+   "search_query": "hr coordinator",
+   "employer_type": "f500",
+   "search_query_ko": "채용 담당자"
+  },
+  {
+   "id": 42,
+   "title": "Research Associate (Life Sciences)",
+   "title_ko": "리서치 어소시에이트",
+   "category": "Research",
+   "demand": "steady",
+   "demand_basis": "제약·바이오 R&D 수요",
+   "entry_salary_usd": "$50-70k",
+   "example_f500_employers": [
+    "Pfizer",
+    "Merck",
+    "Johnson & Johnson",
+    "Thermo Fisher"
+   ],
+   "skills": [
+    13,
+    0,
+    16,
+    1
+   ],
+   "interests": [
+    1,
+    8
+   ],
+   "growth_path": "Associate → Scientist → Research Lead",
+   "search_query": "research associate",
+   "employer_type": "f500",
+   "search_query_ko": "연구원 RA"
+  },
+  {
+   "id": 43,
+   "title": "Solutions Architect (Associate)",
+   "title_ko": "솔루션스 아키텍트",
+   "category": "Engineering",
+   "demand": "high",
+   "demand_basis": "클라우드 3사 신입 SA 프로그램 상시 운영 (AWS Associate SA 등)",
+   "entry_salary_usd": "$90-130k",
+   "employer_type": "f500",
+   "example_f500_employers": [
+    "Amazon (AWS)",
+    "Microsoft",
+    "Oracle",
+    "IBM",
+    "Nvidia"
+   ],
+   "skills": [
+    21,
+    0,
+    14,
+    4
+   ],
+   "interests": [
+    6,
+    3
+   ],
+   "growth_path": "Associate SA → SA → Principal SA",
+   "search_query": "associate solutions architect",
+   "search_query_ko": "솔루션즈 아키텍트"
+  },
+  {
+   "id": 44,
+   "title": "Forward Deployed Engineer",
+   "title_ko": "포워드 디플로이드 엔지니어",
+   "category": "Applied AI",
+   "demand": "surging",
+   "demand_basis": "2026년 39개 AI 기업 224개 오픈 포지션; OpenAI·Anthropic 전담 조직 신설 (보통 2년+ 경력 선호)",
+   "entry_salary_usd": "$150-280k",
+   "employer_type": "growth_it",
+   "example_f500_employers": [
+    "Palantir",
+    "OpenAI",
+    "Anthropic",
+    "Databricks"
+   ],
+   "skills": [
+    4,
+    0,
+    3,
+    14
+   ],
+   "interests": [
+    6,
+    3
+   ],
+   "growth_path": "FDE → Senior FDE → Deployment Lead / PM",
+   "search_query": "forward deployed engineer",
+   "search_query_ko": "Forward Deployed Engineer"
+  },
+  {
+   "id": 45,
+   "title": "Applied AI Engineer",
+   "title_ko": "어플라이드 AI 엔지니어",
+   "category": "Applied AI",
+   "demand": "surging",
+   "demand_basis": "프런티어 랩·엔터프라이즈 AI 도입 확산",
+   "entry_salary_usd": "$120-200k",
+   "employer_type": "mixed",
+   "example_f500_employers": [
+    "Anthropic",
+    "OpenAI",
+    "Microsoft",
+    "Databricks"
+   ],
+   "skills": [
+    20,
+    4,
+    0
+   ],
+   "interests": [
+    10,
+    0
+   ],
+   "growth_path": "Applied AI Eng → Senior → Applied AI Lead",
+   "search_query": "applied ai engineer",
+   "search_query_ko": "Applied AI Engineer"
+  },
+  {
+   "id": 46,
+   "title": "Research Engineer (Frontier Lab)",
+   "title_ko": "리서치 엔지니어",
+   "category": "Applied AI",
+   "demand": "surging",
+   "demand_basis": "OpenAI·Anthropic·xAI·DeepMind 핵심 채용 직군",
+   "entry_salary_usd": "$150-300k",
+   "employer_type": "growth_it",
+   "example_f500_employers": [
+    "OpenAI",
+    "Anthropic",
+    "xAI",
+    "Google DeepMind"
+   ],
+   "skills": [
+    20,
+    4,
+    21
+   ],
+   "interests": [
+    10,
+    6
+   ],
+   "growth_path": "RE → Senior RE → Member of Technical Staff Lead",
+   "search_query": "research engineer ai",
+   "search_query_ko": "리서치 엔지니어"
+  },
+  {
+   "id": 47,
+   "title": "AI Safety / Alignment Researcher",
+   "title_ko": "AI 세이프티 연구원",
+   "category": "Applied AI",
+   "demand": "surging",
+   "demand_basis": "규제·안전성 요구 확대로 프런티어 랩 채용 증가",
+   "entry_salary_usd": "$130-250k",
+   "employer_type": "growth_it",
+   "example_f500_employers": [
+    "Anthropic",
+    "OpenAI",
+    "Google DeepMind"
+   ],
+   "skills": [
+    20,
+    13,
+    4,
+    16
+   ],
+   "interests": [
+    10,
+    1
+   ],
+   "growth_path": "Researcher → Senior → Safety Team Lead",
+   "search_query": "ai safety researcher",
+   "search_query_ko": "AI 안전 연구"
+  },
+  {
+   "id": 48,
+   "title": "Solutions / Sales Engineer",
+   "title_ko": "솔루션스·세일즈 엔지니어",
+   "category": "Sales",
+   "demand": "high",
+   "demand_basis": "데이터·AI 플랫폼 기업 GTM 확장",
+   "entry_salary_usd": "$90-140k OTE",
+   "employer_type": "mixed",
+   "example_f500_employers": [
+    "Databricks",
+    "Snowflake",
+    "Palantir",
+    "Salesforce",
+    "Nvidia"
+   ],
+   "skills": [
+    4,
+    10,
+    14,
+    21
+   ],
+   "interests": [
+    6,
+    3
+   ],
+   "growth_path": "SE → Senior SE → SE Manager / SA",
+   "search_query": "sales engineer",
+   "search_query_ko": "세일즈 엔지니어"
+  },
+  {
+   "id": 49,
+   "title": "AI Product Manager",
+   "title_ko": "AI 프로덕트 매니저",
+   "category": "Product",
+   "demand": "surging",
+   "demand_basis": "AI 제품 출시 경쟁으로 수요 급증",
+   "entry_salary_usd": "$110-170k",
+   "employer_type": "mixed",
+   "example_f500_employers": [
+    "OpenAI",
+    "Anthropic",
+    "Microsoft",
+    "Scale AI"
+   ],
+   "skills": [
+    17,
+    20,
+    0,
+    1
+   ],
+   "interests": [
+    10,
+    0
+   ],
+   "growth_path": "AI PM → Senior PM → Head of Product",
+   "search_query": "ai product manager",
+   "search_query_ko": "AI 프로덕트 매니저"
+  },
+  {
+   "id": 50,
+   "title": "Developer Relations / Advocate",
+   "title_ko": "디벨로퍼 릴레이션스",
+   "category": "Marketing",
+   "demand": "high",
+   "demand_basis": "AI API 생태계 경쟁 — 개발자 커뮤니티 확보전",
+   "entry_salary_usd": "$100-160k",
+   "employer_type": "mixed",
+   "example_f500_employers": [
+    "OpenAI",
+    "Anthropic",
+    "Nvidia",
+    "Stripe"
+   ],
+   "skills": [
+    4,
+    0,
+    14,
+    8
+   ],
+   "interests": [
+    6,
+    4
+   ],
+   "growth_path": "DevRel → Senior Advocate → DevRel Lead",
+   "search_query": "developer advocate",
+   "search_query_ko": "Developer Relations"
+  },
+  {
+   "id": 51,
+   "title": "Enterprise GTM / Account Executive (AI)",
+   "title_ko": "엔터프라이즈 GTM·AE",
+   "category": "Sales",
+   "demand": "surging",
+   "demand_basis": "Anthropic·OpenAI 채용 중 GTM 직군 비중 최대 (GTMnow)",
+   "entry_salary_usd": "$120-200k OTE",
+   "employer_type": "growth_it",
+   "example_f500_employers": [
+    "OpenAI",
+    "Anthropic",
+    "Databricks",
+    "Palantir"
+   ],
+   "skills": [
+    10,
+    26,
+    0,
+    14
+   ],
+   "interests": [
+    3,
+    7
+   ],
+   "growth_path": "AE → Enterprise AE → Sales Director",
+   "search_query": "enterprise account executive ai",
+   "search_query_ko": "엔터프라이즈 영업"
+  },
+  {
+   "id": 52,
+   "title": "Trust & Safety Analyst",
+   "title_ko": "트러스트&세이프티 분석가",
+   "category": "Security",
+   "demand": "high",
+   "demand_basis": "AI 오남용 대응 조직 확대",
+   "entry_salary_usd": "$70-110k",
+   "employer_type": "mixed",
+   "example_f500_employers": [
+    "OpenAI",
+    "Anthropic",
+    "Meta",
+    "Microsoft"
+   ],
+   "skills": [
+    13,
+    1,
+    0,
+    22
+   ],
+   "interests": [
+    8,
+    1
+   ],
+   "growth_path": "Analyst → Policy Specialist → T&S Lead",
+   "search_query": "trust and safety analyst",
+   "search_query_ko": "Trust and Safety"
+  },
+  {
+   "id": 53,
+   "title": "AI Infrastructure Engineer",
+   "title_ko": "AI 인프라 엔지니어",
+   "category": "Infrastructure",
+   "demand": "surging",
+   "demand_basis": "GPU 클러스터·데이터센터 투자 급증 (xAI $20B 라운드 등)",
+   "entry_salary_usd": "$130-220k",
+   "employer_type": "mixed",
+   "example_f500_employers": [
+    "Nvidia",
+    "xAI",
+    "OpenAI",
+    "Microsoft"
+   ],
+   "skills": [
+    21,
+    4,
+    20
+   ],
+   "interests": [
+    6,
+    10
+   ],
+   "growth_path": "Infra Eng → Senior → Platform Lead",
+   "search_query": "ai infrastructure engineer",
+   "search_query_ko": "AI 인프라 엔지니어"
+  },
+  {
+   "id": 54,
+   "title": "Technical Recruiter (AI/Tech)",
+   "title_ko": "테크니컬 리크루터",
+   "category": "People",
+   "demand": "high",
+   "demand_basis": "AI 인재 확보전으로 리크루팅 조직 확대",
+   "entry_salary_usd": "$70-110k",
+   "employer_type": "mixed",
+   "example_f500_employers": [
+    "OpenAI",
+    "Anthropic",
+    "Nvidia",
+    "Databricks"
+   ],
+   "skills": [
+    18,
+    0,
+    10
+   ],
+   "interests": [
+    8,
+    5
+   ],
+   "growth_path": "Recruiter → Senior → Talent Lead",
+   "search_query": "technical recruiter",
+   "search_query_ko": "테크니컬 리크루터"
+  }
+ ]
+}

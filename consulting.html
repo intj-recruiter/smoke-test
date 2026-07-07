@@ -137,6 +137,7 @@
   </div>
 </div>
 
+<script src="config.js"></script>
 <script>
 // Firstbite 진단 결과 연동 (URL 파라미터)
 const p=new URLSearchParams(location.search);
@@ -147,8 +148,8 @@ if(role){
   b.innerHTML=`Firstbite 진단 결과 — 현재 단계 <b>${stage||"-"}</b>, 추천 직무 <b>${role}</b>${fit?` (적합도 ${fit}%)`:""}. 이 결과를 바탕으로 리크루터가 상담을 준비해요.`;
   document.getElementById("targetRole").value=role;
 }
-// 신청 저장 백엔드 (배포 시 백엔드 URL로 변경)
-const BACKEND="http://localhost:8787";
+// 신청 저장 백엔드 (config.js에서 설정)
+const BACKEND=(window.FB_BACKEND||"http://localhost:8787");
 // ★ 결제 링크(토스/카카오) 생성 후 붙여넣으면, 저장 후 결제 페이지도 함께 열립니다.
 const PAYMENT_URL="";
 const form=document.getElementById("form");

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Firstbite 마케팅 대시보드</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  :root{--bg:#FFF9EC;--card:#FFF;--card2:#FFF3D6;--border:#F0E2B8;--text:#3B3320;--muted:#8A7F5C;--accent:#E09E00;--accent2:#F5B301;--green:#15803d}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.5;padding:24px}
+  .wrap{max-width:1080px;margin:0 auto}
+  h1{font-size:1.4rem;margin-bottom:4px}
+  h1 span{color:var(--accent)}
+  .sub{color:var(--muted);font-size:.85rem;margin-bottom:20px}
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:20px}
+  .kpi{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px}
+  .kpi .n{font-size:1.6rem;font-weight:800;color:var(--accent)}
+  .kpi .l{font-size:.75rem;color:var(--muted);margin-top:2px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px}
+  @media(max-width:760px){.grid{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px}
+  .card h2{font-size:.95rem;margin-bottom:12px}
+  table{width:100%;border-collapse:collapse;font-size:.82rem}
+  th,td{padding:8px 10px;text-align:left;border-bottom:1px solid var(--border);vertical-align:top}
+  th{color:var(--muted);font-size:.72rem;text-transform:uppercase;letter-spacing:.04em}
+  tr:hover td{background:var(--card2)}
+  .pill{display:inline-block;font-size:.7rem;padding:2px 8px;border-radius:999px;background:var(--card2);border:1px solid var(--border);color:var(--muted)}
+  #keybar{display:flex;gap:8px;margin-bottom:16px}
+  #keybar input{flex:1;max-width:280px;padding:9px 12px;border-radius:8px;border:1px solid var(--border);background:var(--card);color:var(--text)}
+  #keybar button{padding:9px 18px;border:none;border-radius:8px;background:linear-gradient(90deg,var(--accent),var(--accent2));color:#2b2410;font-weight:700;cursor:pointer}
+  .err{color:#c2410c;font-size:.85rem;margin-bottom:12px}
+  .muted{color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>🧀 Firstbite <span>마케팅 대시보드</span></h1>
+  <p class="sub" id="gen">불러오는 중…</p>
+  <div id="keybar" style="display:none">
+    <input id="key" type="password" placeholder="관리자 키 (ADMIN_KEY)">
+    <button onclick="saveKey()">접속</button>
+  </div>
+  <div class="err" id="err"></div>
+
+  <div class="kpis" id="kpis"></div>
+
+  <div class="grid">
+    <div class="card"><h2>유입 경로 (컨설팅 페이지 방문 기준)</h2><canvas id="srcChart" height="220"></canvas></div>
+    <div class="card"><h2>상세 페이지 스크롤 도달률</h2><canvas id="funnelChart" height="220"></canvas></div>
+  </div>
+
+  <div class="card" style="margin-bottom:14px">
+    <h2>페이지별 지표</h2>
+    <table id="pagesTbl"><thead><tr><th>페이지</th><th>방문(세션)</th><th>CTA 클릭</th><th>스크롤 50%+</th><th>스크롤 100%</th></tr></thead><tbody></tbody></table>
+  </div>
+
+  <div class="card">
+    <h2>신청 목록 (결제하기 클릭)</h2>
+    <table id="leadsTbl"><thead><tr><th>시각</th><th>이름</th><th>이메일</th><th>희망 직무</th><th>문의 내용</th><th>유입</th><th>스크롤</th><th>체류→결제</th><th>진단</th></tr></thead><tbody></tbody></table>
+    <p class="muted" id="noleads" style="display:none;font-size:.85rem;padding:10px">아직 신청이 없습니다.</p>
+  </div>
+</div>
+
+<script src="config.js"></script>
+<script>
+const B=(window.FB_BACKEND||"http://localhost:8787");
+const $=id=>document.getElementById(id);
+function getKey(){ try{return localStorage.getItem("fb_admin_key")||"";}catch(e){return "";} }
+function saveKey(){ try{localStorage.setItem("fb_admin_key",$("key").value);}catch(e){} location.reload(); }
+const fmtT=ms=>ms>=60000?Math.round(ms/60000)+"분 "+Math.round(ms%60000/1000)+"초":Math.round(ms/1000)+"초";
+
+async function load(){
+  const k=encodeURIComponent(getKey());
+  let stats,leads;
+  try{
+    const [r1,r2]=await Promise.all([fetch(`${B}/api/stats?key=${k}`),fetch(`${B}/api/leads?key=${k}`)]);
+    if(r1.status===401||r2.status===401){ $("keybar").style.display="flex"; $("gen").textContent="관리자 키를 입력하세요."; return; }
+    if(!r1.ok||!r2.ok) throw 0;
+    stats=await r1.json(); leads=(await r2.json()).leads||[];
+  }catch(e){ $("err").textContent="백엔드에 연결하지 못했습니다. (Render 서버가 잠들어 있으면 30초 후 새로고침)"; return; }
+
+  $("gen").textContent="업데이트: "+new Date(stats.generated).toLocaleString("ko-KR")+" · 데이터: "+B;
+
+  const c=stats.pages?.consulting||{visits:0,sources:{},scrollFunnel:{},ctaClicks:0};
+  const f=stats.pages?.firstbite||{visits:0,ctaClicks:0};
+  const L=stats.leads||{};
+  // KPI
+  const kpis=[
+    ["진단 페이지 방문",f.visits],
+    ["상세 페이지 방문",c.visits],
+    ["진단→상세 CTA 클릭",f.ctaClicks],
+    ["신청(결제 클릭)",L.total??0],
+    ["상세→신청 전환율",L.conversionFromConsulting!=null?L.conversionFromConsulting+"%":"–"],
+    ["평균 체류→결제",L.avgTimeToSubmitSec!=null?fmtT(L.avgTimeToSubmitSec*1000):"–"],
+    ["신청자 평균 스크롤",L.avgMaxScrollPct!=null?L.avgMaxScrollPct+"%":"–"]
+  ];
+  $("kpis").innerHTML=kpis.map(([l,n])=>`<div class="kpi"><div class="n">${n}</div><div class="l">${l}</div></div>`).join("");
+
+  // 유입 경로 차트
+  const srcEntries=Object.entries(c.sources||{}).sort((a,b)=>b[1]-a[1]).slice(0,8);
+  new Chart($("srcChart"),{type:"bar",data:{labels:srcEntries.map(e=>e[0]),datasets:[{label:"방문",data:srcEntries.map(e=>e[1]),backgroundColor:"#F5B301"}]},options:{indexAxis:"y",plugins:{legend:{display:false}},scales:{x:{ticks:{precision:0}}}}});
+
+  // 스크롤 퍼널
+  const sf=c.scrollFunnel||{};
+  new Chart($("funnelChart"),{type:"bar",data:{labels:["방문","25%","50%","75%","100%"],datasets:[{label:"세션",data:[c.visits,sf["25%"]||0,sf["50%"]||0,sf["75%"]||0,sf["100%"]||0],backgroundColor:["#E09E00","#F5B301","#F7C441","#FAD46E","#FDE8A8"]}]},options:{plugins:{legend:{display:false}},scales:{y:{ticks:{precision:0}}}}});
+
+  // 페이지별 표
+  $("pagesTbl").querySelector("tbody").innerHTML=Object.entries(stats.pages||{}).map(([p,d])=>
+    `<tr><td><b>${p}</b></td><td>${d.visits}</td><td>${d.ctaClicks}</td><td>${d.scrollFunnel?.["50%"]||0}</td><td>${d.scrollFunnel?.["100%"]||0}</td></tr>`).join("");
+
+  // 신청 목록
+  const tb=$("leadsTbl").querySelector("tbody");
+  if(!leads.length){ $("noleads").style.display="block"; }
+  tb.innerHTML=leads.slice().reverse().map(l=>{
+    const src=l.utm_source||(l.ref?(()=>{try{return new URL(l.ref).hostname.replace(/^www\./,"")}catch(e){return "direct"}})():"direct");
+    return `<tr>
+      <td>${new Date(l.ts).toLocaleString("ko-KR",{month:"numeric",day:"numeric",hour:"2-digit",minute:"2-digit"})}</td>
+      <td><b>${l.name||""}</b></td><td>${l.email||""}</td><td>${l.targetRole||""}</td>
+      <td style="max-width:220px">${(l.msg||"").slice(0,120)}</td>
+      <td><span class="pill">${src}</span></td>
+      <td>${l.maxScroll?l.maxScroll+"%":"–"}</td>
+      <td>${l.timeOnPageMs?fmtT(l.timeOnPageMs):"–"}</td>
+      <td>${l.stage||""}${l.fit?" · "+l.fit+"%":""}</td>
+    </tr>`;}).join("");
+}
+load();
+</script>
+</body>
+</html>

@@ -161,7 +161,7 @@ form.addEventListener("submit",async e=>{
   try{
     const res=await fetch(`${BACKEND}/api/leads`,{
       method:"POST",headers:{"content-type":"application/json"},
-      body:JSON.stringify({name:v("name"),email:v("email"),targetRole:v("targetRole"),msg:v("msg"),stage,fit})
+      body:JSON.stringify(Object.assign({name:v("name"),email:v("email"),targetRole:v("targetRole"),msg:v("msg"),stage,fit},window.fbSession?window.fbSession():{}))
     });
     if(!res.ok) throw new Error("save failed");
     if(PAYMENT_URL) window.open(PAYMENT_URL,"_blank");

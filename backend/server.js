@@ -30,6 +30,7 @@ try {
 const PORT = Number(process.env.PORT || 8787);
 const SARAMIN_KEY = process.env.SARAMIN_API_KEY || "";
 const ENABLE_WANTED = (process.env.ENABLE_WANTED ?? "1") === "1";
+const ADMIN_KEY = process.env.ADMIN_KEY || ""; // 설정 시 /api/leads·/api/stats 조회에 ?key= 필요
 
 // ---- roles DB ----
 function loadRoles() {
@@ -233,6 +234,68 @@ http.createServer(async (req, res) => {
       try { const jobs = await adapters[site]({ q, qko: q }); return send(res, 200, { site, q, count: jobs.length, jobs }); }
       catch (e) { return send(res, 200, { site, q, error: String(e?.message || e) }); }
     }
+    // 마케팅 이벤트 수집: POST /api/events {sid,page,type,val,ref,utm,t}
+    if (url.pathname === "/api/events" && req.method === "POST") {
+      let body = "";
+      req.on("data", c => { body += c; if (body.length > 10_000) req.destroy(); });
+      req.on("end", () => {
+        try {
+          const d = JSON.parse(body || "{}");
+          const TYPES = ["page_view", "scroll", "cta_click"];
+          if (!d.sid || !TYPES.includes(d.type)) return send(res, 400, { error: "bad event" });
+          const ev = { ts: new Date().toISOString(), sid: String(d.sid).slice(0, 40), page: String(d.page || "").slice(0, 30), type: d.type, val: String(d.val || "").slice(0, 30), ref: String(d.ref || "").slice(0, 300), utm_source: String(d.utm?.source || "").slice(0, 50), utm_medium: String(d.utm?.medium || "").slice(0, 50), utm_campaign: String(d.utm?.campaign || "").slice(0, 50), t: Number(d.t) || 0 };
+          fs.appendFileSync(path.join(__dirname, "events.jsonl"), JSON.stringify(ev) + "\n");
+          send(res, 200, { ok: true });
+        } catch (e) { send(res, 400, { error: "invalid json" }); }
+      });
+      return;
+    }
+    // 마케팅 통계: GET /api/stats
+    if (url.pathname === "/api/stats") {
+      if (ADMIN_KEY && url.searchParams.get("key") !== ADMIN_KEY) return send(res, 401, { error: "key 필요 (?key=...)" });
+      const readJl = f => { try { return fs.readFileSync(path.join(__dirname, f), "utf8").trim().split("\n").filter(Boolean).map(JSON.parse); } catch (e) { return []; } };
+      const evs = readJl("events.jsonl"), leads = readJl("leads.jsonl");
+      const refHost = r => { try { return r ? new URL(r).hostname.replace(/^www\./, "") : ""; } catch (e) { return ""; } };
+      // 페이지별 세션
+      const sess = {}; // page -> Map(sid -> {src, scroll:maxMilestone, cta})
+      for (const e of evs) {
+        const p = e.page || "?";
+        sess[p] = sess[p] || new Map();
+        if (!sess[p].has(e.sid)) sess[p].set(e.sid, { src: "", scroll: 0, cta: false });
+        const s = sess[p].get(e.sid);
+        if (e.type === "page_view" && !s.src) s.src = e.utm_source || refHost(e.ref) || "direct";
+        if (e.type === "scroll") s.scroll = Math.max(s.scroll, Number(e.val) || 0);
+        if (e.type === "cta_click") s.cta = true;
+      }
+      const pageStats = {};
+      for (const [p, m] of Object.entries(sess)) {
+        const arr = [...m.values()];
+        const sources = {};
+        arr.forEach(s => { sources[s.src || "direct"] = (sources[s.src || "direct"] || 0) + 1; });
+        pageStats[p] = {
+          visits: arr.length,
+          sources,
+          scrollFunnel: { "25%": arr.filter(s => s.scroll >= 25).length, "50%": arr.filter(s => s.scroll >= 50).length, "75%": arr.filter(s => s.scroll >= 75).length, "100%": arr.filter(s => s.scroll >= 100).length },
+          ctaClicks: arr.filter(s => s.cta).length
+        };
+      }
+      const times = leads.map(l => Number(l.timeOnPageMs)).filter(n => n > 0);
+      const scrolls = leads.map(l => Number(l.maxScroll)).filter(n => n > 0);
+      const leadSources = {};
+      leads.forEach(l => { const s = l.utm_source || refHost(l.ref) || "direct"; leadSources[s] = (leadSources[s] || 0) + 1; });
+      const cVisits = pageStats.consulting?.visits || 0;
+      return send(res, 200, {
+        generated: new Date().toISOString(),
+        pages: pageStats,
+        leads: {
+          total: leads.length,
+          conversionFromConsulting: cVisits ? +(leads.length / cVisits * 100).toFixed(1) : null,
+          avgTimeToSubmitSec: times.length ? Math.round(times.reduce((a, b) => a + b, 0) / times.length / 1000) : null,
+          avgMaxScrollPct: scrolls.length ? Math.round(scrolls.reduce((a, b) => a + b, 0) / scrolls.length) : null,
+          sources: leadSources
+        }
+      });
+    }
     // 컨설팅 신청(결제 클릭) 저장: POST /api/leads {name,email,targetRole,msg,stage,fit}
     if (url.pathname === "/api/leads" && req.method === "POST") {
       let body = "";
@@ -241,7 +304,8 @@ http.createServer(async (req, res) => {
         try {
           const d = JSON.parse(body || "{}");
           if (!d.name || !d.email) return send(res, 400, { error: "name, email 필수" });
-          const lead = { ts: new Date().toISOString(), name: String(d.name).slice(0, 100), email: String(d.email).slice(0, 200), targetRole: String(d.targetRole || "").slice(0, 100), msg: String(d.msg || "").slice(0, 2000), stage: String(d.stage || "").slice(0, 30), fit: String(d.fit || "").slice(0, 5), price: "500000", source: "consulting" };
+          const lead = { ts: new Date().toISOString(), name: String(d.name).slice(0, 100), email: String(d.email).slice(0, 200), targetRole: String(d.targetRole || "").slice(0, 100), msg: String(d.msg || "").slice(0, 2000), stage: String(d.stage || "").slice(0, 30), fit: String(d.fit || "").slice(0, 5), price: "500000", source: "consulting",
+            sid: String(d.sid || "").slice(0, 40), ref: String(d.ref || "").slice(0, 300), utm_source: String(d.utm_source || "").slice(0, 50), utm_medium: String(d.utm_medium || "").slice(0, 50), utm_campaign: String(d.utm_campaign || "").slice(0, 50), maxScroll: Number(d.maxScroll) || 0, timeOnPageMs: Number(d.timeOnPageMs) || 0 };
           fs.appendFileSync(path.join(__dirname, "leads.jsonl"), JSON.stringify(lead) + "\n");
           console.log("새 신청:", lead.name, lead.email, lead.targetRole);
           send(res, 200, { ok: true });
@@ -251,6 +315,7 @@ http.createServer(async (req, res) => {
     }
     // 신청 목록 조회 (운영자용): GET /api/leads
     if (url.pathname === "/api/leads") {
+      if (ADMIN_KEY && url.searchParams.get("key") !== ADMIN_KEY) return send(res, 401, { error: "key 필요 (?key=...)" });
       try {
         const lines = fs.readFileSync(path.join(__dirname, "leads.jsonl"), "utf8").trim().split("\n").filter(Boolean).map(JSON.parse);
         return send(res, 200, { count: lines.length, leads: lines });
